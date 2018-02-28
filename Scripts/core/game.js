@@ -1,14 +1,17 @@
 /// <reference path="_references.ts"/>
 // IIFE -- Immediately Invoked Function Expression
 (function () {
+    // Game Variables
     var canvas = document.getElementById("canvas");
     var stage;
     var helloLabel;
     var clickMeButton;
     var assetManager;
     var assetManifest;
+    var currentScene;
     assetManifest = [
-        { id: "clickMeButton", src: "./Assets/images/clickMeButton.png" }
+        { id: "clickMeButton", src: "./Assets/images/clickMeButton.png" },
+        { id: "startButton", src: "./Assets/images/startButton.png" }
     ];
     // preloads assets
     function Init() {
@@ -30,14 +33,18 @@
     function Update() {
         // if the scene that is playing returns another current scene
         // then call Main again and switch the scene
+        if (currentScene.Update() != objects.Game.currentScene) {
+            console.log(objects.Game.currentScene);
+            Main();
+        }
         stage.update(); // redraws the stage
     }
     function Main() {
         switch (objects.Game.currentScene) {
             case config.Scene.START:
-                // remove all current objects from the stage
-                // instantiate a new scene object
-                // add the new scene object to stage
+                stage.removeAllChildren();
+                currentScene = new scenes.StartScene(assetManager);
+                stage.addChild(currentScene);
                 break;
             case config.Scene.PLAY:
                 // do some other stuff

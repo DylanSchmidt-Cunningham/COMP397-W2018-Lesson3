@@ -15,7 +15,9 @@ var scenes;
         // Public Properties
         // Constructor
         function StartScene(assetManager) {
-            return _super.call(this, assetManager) || this;
+            var _this = _super.call(this, assetManager) || this;
+            _this.Start();
+            return _this;
         }
         // Private Methods
         StartScene.prototype._startButtonClick = function () {
@@ -28,6 +30,8 @@ var scenes;
             this._startButton = new objects.Button(this.assetManager, "startButton", 320, 300);
         };
         StartScene.prototype.Update = function () {
+            console.log("start update");
+            return objects.Game.currentScene;
         };
         // This is where the fun happens
         StartScene.prototype.Main = function () {
