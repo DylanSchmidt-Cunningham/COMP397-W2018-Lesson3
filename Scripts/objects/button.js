@@ -15,10 +15,12 @@ var objects;
         // Private Instance Variables
         // Publuc Properties
         // Constructor
-        function Button(imagePath, x, y) {
+        function Button(assetManager, imageString, x, y) {
             if (x === void 0) { x = 0; }
             if (y === void 0) { y = 0; }
-            var _this = _super.call(this, imagePath) || this;
+            var _this = _super.call(this, assetManager.getResult(imageString)) || this;
+            _this.regX = _this.getBounds().width * 0.5;
+            _this.regY = _this.getBounds().height * 0.5;
             _this.x = x;
             _this.y = y;
             _this.on("mouseover", _this._mouseOver);
