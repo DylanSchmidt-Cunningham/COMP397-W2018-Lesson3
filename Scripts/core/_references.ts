@@ -1,3 +1,6 @@
 // we don't need this, it's for backward compatibility
+/// <reference path="../../Scripts/objects/game.ts"/>
 /// <reference path="../../Scripts/objects/label.ts"/>
 /// <reference path="../../Scripts/objects/button.ts"/>
+/// <reference path="../../Scripts/config/scene.ts"/>
+/// <reference path="../../Scripts/objects/scene.ts"/>
