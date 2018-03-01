@@ -10,37 +10,38 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var scenes;
 (function (scenes) {
-    var StartScene = /** @class */ (function (_super) {
-        __extends(StartScene, _super);
+    var OverScene = /** @class */ (function (_super) {
+        __extends(OverScene, _super);
         // Public Properties
         // Constructor
-        function StartScene(assetManager) {
+        function OverScene(assetManager) {
             var _this = _super.call(this, assetManager) || this;
             _this.Start();
             return _this;
         }
         // Private Methods
-        StartScene.prototype._startButtonClick = function () {
+        OverScene.prototype._backButtonClick = function () {
             objects.Game.currentScene = config.Scene.PLAY;
         };
         // Public Methods
         // Initialize Game Variables and objects
-        StartScene.prototype.Start = function () {
-            this._welcomeLabel = new objects.Label("Welcome", "60px", "Consolas", "#000000", 320, 240, true);
-            this._startButton = new objects.Button(this.assetManager, "startButton", 320, 340);
+        OverScene.prototype.Start = function () {
+            this._overLabel = new objects.Label("Game Over", "40px", "Consolas", "#000000", 320, 240, true);
+            this._backButton = new objects.Button(this.assetManager, "backButton", 320, 340);
             this.Main();
         };
-        StartScene.prototype.Update = function () {
+        OverScene.prototype.Update = function () {
         };
         // This is where the fun happens
-        StartScene.prototype.Main = function () {
-            // add the welcome label to the scene
-            this.addChild(this._welcomeLabel);
-            // add the startButton to the scene
-            this.addChild(this._startButton);
-            this._startButton.on("click", this._startButtonClick);
+        OverScene.prototype.Main = function () {
+            // add the over label to the scene
+            this.addChild(this._overLabel);
+            // add the backButton to the scene
+            this.addChild(this._backButton);
+            // event listeners
+            this._backButton.on("click", this._backButtonClick);
         };
-        return StartScene;
+        return OverScene;
     }(objects.Scene));
-    scenes.StartScene = StartScene;
+    scenes.OverScene = OverScene;
 })(scenes || (scenes = {}));

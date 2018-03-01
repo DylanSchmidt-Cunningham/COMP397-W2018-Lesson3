@@ -29,8 +29,8 @@ module scenes {
             this.Main();
         }
 
-        public Update():number {
-            return objects.Game.currentScene;
+        public Update():void {
+        
         }
 
         // This is where the fun happens
